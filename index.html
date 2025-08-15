@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>U J Prithvi Raj - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Bungee+Inline&display=swap"
+        rel="stylesheet">
+
+</head>
+
+
+<body>
+    <div class="nav">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <section class="hero" id="home">
+        <div class="left">
+            <h1 class="title">Hi, I'm <strong>Prithvi Raj</strong></h1>
+            <span class="desc">AI/ML Engineer</span>
+            <p class="sub">First-year CSE (AI/ML) at VIT Chennai. Passionate about coding, problem-solving & AI
+                innovation.</p>
+        </div>
+
+        <div class="right">
+            <div class="stage" id="stage">
+                <!-- photo clipped to hex -->
+                <div class="hex-photo">
+                    <img src="PROFILE PICTUREcropped2.jpg" alt="Your photo" />
+                </div>
+
+                <!-- visible black outline and big vertices -->
+                <svg class="hex-outline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="50,2 88,25 88,75 50,98 12,75 12,25" />
+                    <circle cx="50" cy="2" r="2.8" />
+                    <circle cx="88" cy="25" r="2.8" />
+                    <circle cx="88" cy="75" r="2.8" />
+                    <circle cx="50" cy="98" r="2.8" />
+                    <circle cx="12" cy="75" r="2.8" />
+                    <circle cx="12" cy="25" r="2.8" />
+                </svg>
+
+                <!-- interactive hotspots with new hexagon design -->
+                <div class="skill s1" data-skill="python">
+                    <div class="dot" aria-label="Python"></div>
+                    <div class="mini">
+                        <div class="hexcard">
+                            <h3>Python</h3>
+                            <p>Beginner → Intermediate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill s2" data-skill="htmlcss">
+                    <div class="dot" aria-label="HTML/CSS"></div>
+                    <div class="mini">
+                        <div class="hexcard">
+                            <h3>HTML/CSS</h3>
+                            <p>Web Basics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill s3" data-skill="java">
+                    <div class="dot" aria-label="Java"></div>
+                    <div class="mini">
+                        <div class="hexcard">
+                            <h3>Java</h3>
+                            <p>Revise & Improve</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill s4" data-skill="dsa">
+                    <div class="dot" aria-label="DSA"></div>
+                    <div class="mini">
+                        <div class="hexcard">
+                            <h3>DSA</h3>
+                            <p>Arrays/Stacks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill s5" data-skill="aiml">
+                    <div class="dot" aria-label="AI/ML"></div>
+                    <div class="mini">
+                        <div class="hexcard">
+                            <h3>AI/ML</h3>
+                            <p>Future Focus</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill s6" data-skill="git">
+                    <div class="dot" aria-label="Git"></div>
+                    <div class="mini">
+                        <div class="hexcard">
+                            <h3>Git</h3>
+                            <p>Basic Commands</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="border-space"></div>
+    <section class="about-me" id="about">
+        <h1>About Me</h1>
+
+        <div class="about-content">
+            <div class="bio">
+                <p>I enjoy figuring out problems and coming up with clever solutions. I’m still learning a lot about
+                    AI/ML, and I want to keep going until I find the best way to solve things. I’m curious and always
+                    ready to explore new ideas.</p>
+                <p> I like experimenting, even if it means making mistakes along the
+                    way,
+                    because that’s how I learn. I enjoy spending time coding, turning ideas into something real, and
+                    seeing them come to life.
+                </p>
+            </div>
+
+            <div class="hobbies-section">
+                <h2>Interests & Hobbies</h2>
+                <div class="hobbies">
+                    <button class="hobby-btn">Programming</button>
+                    <button class="hobby-btn">AI & Machine Learning</button>
+                    <button class="hobby-btn">Skill building</button>
+                    <button class="hobby-btn">Anime</button>
+                    <button class="hobby-btn">Music</button>
+                    <button class="hobby-btn">Gaming</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add this right after your About Me section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2>Get In Touch</h2>
+
+
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>👋 Newbie developer here! Down to talk about projects, internships, or chat about wild tech/AI
+                        ideas. Hit me up if you wanna collaborate or teach me something cool! </p>
+
+                    <div class="contact-details">
+                        <p><i class="fas fa-envelope"></i> gujprithvi@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +91 98854 79744</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Hyderabad, India</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/uj-prithvi-raj" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/UJPrithviraj" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://instagram.com/prithvi0_o" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:gujprithvi@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://discord.com/users/prithvii._." target="_blank"><i
+                                class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="contact">
+        <div>
+            <p> <small>&copy; 2025 Prithvi Raj. All rights reserved.</small></p>
+
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        // Make mini-hex stay visible after first hover
+        document.querySelectorAll('.skill').forEach((el) => {
+            el.addEventListener('mouseenter', () => el.classList.add('revealed'), { once: true });
+        });
+
+        // Interactive hover tooltips
+        document.querySelectorAll('.skill').forEach(hex => {
+            hex.addEventListener('mouseenter', () => {
+                const skill = hex.querySelector('h3').textContent;
+                const examples = {
+                    "Python": "Built Rps ",
+                    "HTML/CSS": "Designed Portfolio",
+                    "Java": "School projects",
+                    "DSA": "Learning",
+                    "AI/ML": "Learning",
+                    "Git": "Learning"
+                };
+                hex.querySelector('p').textContent = examples[skill];
+            });
+
+            hex.addEventListener('mouseleave', () => {
+                const defaults = {
+                    "Python": "Beginner",
+                    "HTML/CSS": "Web Basics",
+                    "Java": "Beginner",
+                    "DSA": "Arrays/Stacks",
+                    "AI/ML": "Future Focus",
+                    "Git": "Basic Commands"
+                };
+                hex.querySelector('p').textContent = defaults[hex.querySelector('h3').textContent];
+            });
+        });
+    </script>
+</body>
+
+</html>
