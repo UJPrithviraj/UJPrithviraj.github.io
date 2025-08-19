@@ -429,7 +429,7 @@ body::before {
     background: var(--card-bg);
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.18);
 }
 
 .form-group {
@@ -549,6 +549,7 @@ footer {
 font-family: 'Orbitron', system-ui, sans-serif;
 font-weight: 400; 
 }
+
 
 
 
