@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>U J Prithvi Raj - Portfolio</title>
+    <link rel="icon" type="image/jpeg" href="PROFILE PICTUREcropped2.jpg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Bungee+Inline&display=swap"
@@ -30,12 +31,12 @@
 
         <div class="right">
             <div class="stage" id="stage">
-                <!-- photo clipped to hex -->
+                <!-- photo in hexagon -->
                 <div class="hex-photo">
                     <img src="ProfilePic.jpg" alt="Your photo" />
                 </div>
 
-                <!-- visible black outline and big vertices -->
+                
                 <svg class="hex-outline" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                     <polygon points="50,2 88,25 88,75 50,98 12,75 12,25" />
                     <circle cx="50" cy="2" r="2.8" />
@@ -46,7 +47,7 @@
                     <circle cx="12" cy="25" r="2.8" />
                 </svg>
 
-                <!-- interactive hotspots with new hexagon design -->
+                
                 <div class="skill s1" data-skill="python">
                     <div class="dot" aria-label="Python"></div>
                     <div class="mini">
@@ -139,7 +140,7 @@
         </div>
     </section>
 
-    <!-- Add this right after your About Me section -->
+  
     <section class="contact-section" id="contact">
         <div class="contact-container">
             <h2>Get In Touch</h2>
@@ -207,14 +208,14 @@
 
 
 
-
+    <!-- dont know how to use javascript so c+v ied -->
     <script>
-        // Make mini-hex stay visible after first hover
+        
         document.querySelectorAll('.skill').forEach((el) => {
             el.addEventListener('mouseenter', () => el.classList.add('revealed'), { once: true });
         });
 
-        // Interactive hover tooltips
+        
         document.querySelectorAll('.skill').forEach(hex => {
             hex.addEventListener('mouseenter', () => {
                 const skill = hex.querySelector('h3').textContent;
@@ -246,3 +247,4 @@
 
 
 </html>
+
