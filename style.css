@@ -1,11 +1,12 @@
 :root {
-    --bg: #f5f7fa;
-    --text: #333;
-    --muted: #666;
-    --border: #dfe3ea;
-    --card-bg: #fff;
-
-    /* Skill colors */
+    --blue-dark: #0A192F;
+    --blue-mid: #112240;
+    --accent-cyan: #64FFDA;
+    --accent-blue: #57C5FF;
+    --text: #E6F1FF;
+    --muted: rgba(230, 241, 255, 0.72);
+    --border: rgba(87, 197, 255, 0.25);
+    --card-bg: #0F213F;
     --python: #0a7b00;
     --htmlcss: #afb200;
     --java: #bf0000;
@@ -14,23 +15,32 @@
     --git: #02eeff;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
 
-* {
-    box-sizing: border-box;
-}
 
 body {
     margin: 0;
-    background: #1e3a8a;
-    background: linear-gradient(to bottom, #93c5fd 0%, #1e3a8a 300px, #1e3a8a 100%);
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+    color: var(--text);
+    font-family: 'Orbitron', system-ui, sans-serif;
     min-height: 100vh;
     position: relative;
-    font-family: 'Staatliches', sans-serif;
+    overflow-x: hidden;
 }
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: -80px;
+    background:
+        radial-gradient(circle at 18% 28%, rgba(100, 255, 218, 0.08) 0 38%, transparent 40%),
+        radial-gradient(circle at 82% 42%, rgba(87, 197, 255, 0.07) 0 36%, transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(100, 255, 218, 0.05) 0 34%, transparent 40%);
+    z-index: -1;
+    pointer-events: none;
+}
+
 
 .nav {
     display: flex;
@@ -38,7 +48,7 @@ body {
     text-align: right;
     position: sticky;
     top: 0;
-    background: #1e3a8a;
+    background: var(--blue-dark);
     border-bottom: 1px solid var(--border);
     padding: 14px 24px;
     font-weight: 600;
@@ -47,9 +57,14 @@ body {
 }
 
 .nav a {
-    color: #ffffff;
+    color: var(--text);
     text-decoration: none;
 }
+
+.nav a:hover {
+    color: var(--accent-blue);
+}
+
 
 .hero {
     max-width: 1100px;
@@ -62,22 +77,24 @@ body {
 }
 
 @media (max-width: 900px) {
-    .hero {
-        grid-template-columns: 1fr;
-    }
+    .hero { grid-template-columns: 1fr; }
 }
 
 .title {
     font-size: clamp(28px, 4vw, 44px);
     margin: 0 0 12px;
+    font-family: 'Bungee Inline', cursive;
+    color: var(--accent-cyan);
+    letter-spacing: 0.5px;
 }
 
 .desc {
     display: inline-block;
-    border: 3px solid var(--text);
+    border: 3px solid var(--accent-blue);
     padding: 12px 16px;
     font-weight: 700;
-    background: #fff;
+    background: transparent;
+    color: var(--text);
 }
 
 .sub {
@@ -85,7 +102,7 @@ body {
     margin: 16px 0 0;
 }
 
-/* Hexagon Container */
+
 .stage {
     position: relative;
     width: 300px;
@@ -99,7 +116,7 @@ body {
     inset: 0;
     clip-path: polygon(50% 2%, 88% 25%, 88% 75%, 50% 98%, 12% 75%, 12% 25%);
     overflow: hidden;
-    background: #e5e7eb;
+    background: var(--blue-dark);
 }
 
 .hex-photo img {
@@ -117,18 +134,18 @@ body {
 
 .hex-outline polygon {
     fill: none;
-    stroke: #1f2937;
+    stroke: var(--accent-cyan);
     stroke-width: 3;
 }
 
 .hex-outline circle {
-    fill: #000;
-    stroke: #fff;
+    fill: var(--blue-dark);
+    stroke: var(--accent-blue);
     stroke-width: 3;
     pointer-events: auto;
 }
 
-/* New Hexagon Skills */
+
 .skill {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -140,9 +157,15 @@ body {
     height: 22px;
     border-radius: 50%;
     background: #000;
-    border: 3px solid #fff;
+    border: 3px solid var(--text);
     cursor: pointer;
     transition: transform 0.3s;
+    box-shadow: 0 0 0 0 transparent;
+}
+
+.skill:hover .dot {
+    transform: scale(1.2);
+    box-shadow: 0 0 12px rgba(100, 255, 218, 0.5);
 }
 
 .mini {
@@ -155,7 +178,7 @@ body {
     pointer-events: none;
 }
 
-.hexcard {
+.mini .hexcard {
     position: relative;
     width: 100%;
     height: 100%;
@@ -166,15 +189,16 @@ body {
     justify-content: center;
     align-items: center;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    color: var(--text);
 }
 
-.hexcard::before {
+.mini .hexcard::before {
     content: '';
     position: absolute;
     width: 100px;
     height: 115px;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    background: conic-gradient(var(--skill-color) var(--progress), #eee 0);
+    background: conic-gradient(var(--skill-color) var(--progress), rgba(230, 241, 255, 0.08) 0);
     opacity: 0.2;
     z-index: 0;
 }
@@ -183,6 +207,8 @@ body {
     margin: 0 0 6px;
     font-size: 1.2rem;
     z-index: 1;
+    color: var(--text);
+    font-family: 'Bungee Inline', cursive;
 }
 
 .hexcard p {
@@ -192,109 +218,27 @@ body {
     z-index: 1;
 }
 
-/* Skill positions */
-.s1 {
-    left: 50%;
-    top: 2%;
-    --tx: -40%;
-    --ty: -125%;
-}
 
-.s2 {
-    left: 88%;
-    top: 25%;
-    --tx: 30%;
-    --ty: -100%;
-}
+.s1 { left: 50%; top: 2%; --tx: -40%; --ty: -125%; }
+.s2 { left: 88%; top: 25%; --tx: 30%; --ty: -100%; }
+.s3 { left: 88%; top: 75%; --tx: 30%; --ty: -20%; }
+.s4 { left: 50%; top: 98%; --tx: -40%; --ty: 10%; }
+.s5 { left: 12%; top: 75%; --tx: -110%; --ty: -20%; }
+.s6 { left: 12%; top: 25%; --tx: -110%; --ty: -100%; }
 
-.s3 {
-    left: 88%;
-    top: 75%;
-    --tx: 30%;
-    --ty: -20%;
-}
 
-.s4 {
-    left: 50%;
-    top: 98%;
-    --tx: -40%;
-    --ty: 10%;
-}
-
-.s5 {
-    left: 12%;
-    top: 75%;
-    --tx: -110%;
-    --ty: -20%;
-}
-
-.s6 {
-    left: 12%;
-    top: 25%;
-    --tx: -110%;
-    --ty: -100%;
-}
-
-/* Skill colors */
-[data-skill="python"] {
-    --skill-color: hsl(115, 100%, 50%);
-    --progress: 40%;
-}
-
-[data-skill="htmlcss"] {
-    --skill-color: #fff30f;
-    --progress: 20%;
-}
-
-[data-skill="java"] {
-    --skill-color: #ff2828;
-    --progress: 20%;
-}
-
-[data-skill="dsa"] {
-    --skill-color: var(--dsa);
-    --progress: 25%;
-}
-
-[data-skill="aiml"] {
-    --skill-color: rgba(3, 106, 202, 0.648);
-    --progress: 10%;
-}
-
-[data-skill="git"] {
-    --skill-color: var(--git);
-    --progress: 10%;
-}
-
-/* Dot colors */
-[data-skill="python"] .dot {
-    background: var(--python);
-}
-
-[data-skill="htmlcss"] .dot {
-    background: var(--htmlcss);
-}
-
-[data-skill="java"] .dot {
-    background: var(--java);
-}
-
-[data-skill="dsa"] .dot {
-    background: var(--dsa);
-}
-
-[data-skill="aiml"] .dot {
-    background: var(--aiml);
-}
-
-[data-skill="git"] .dot {
-    background: var(--git);
-}
-
-/* Hover effects */
-.skill:hover .dot {
-    transform: scale(1.2);
-}
+[data-skill="python"] { --skill-color: hsl(115, 100%, 50%); --progress: 40%; }
+[data-skill="python"] .dot { background: var(--python); }
+[data-skill="htmlcss"] { --skill-color: #fff30f; --progress: 20%; }
+[data-skill="htmlcss"] .dot { background: var(--htmlcss); }
+[data-skill="java"] { --skill-color: #ff2828; --progress: 20%; }
+[data-skill="java"] .dot { background: var(--java); }
+[data-skill="dsa"] { --skill-color: var(--dsa); --progress: 25%; }
+[data-skill="dsa"] .dot { background: var(--dsa); }
+[data-skill="aiml"] { --skill-color: rgba(3, 106, 202, 0.648); --progress: 10%; }
+[data-skill="aiml"] .dot { background: var(--aiml); }
+[data-skill="git"] { --skill-color: var(--git); --progress: 10%; }
+[data-skill="git"] .dot { background: var(--git); }
 
 .skill:hover .mini,
 .skill.revealed .mini {
@@ -302,51 +246,17 @@ body {
     transform: translate(var(--tx), var(--ty)) scale(1);
 }
 
-/* Sections */
-
-.contact {
-    background-color: #353535;
-    max-height: 120px;
-    max-width: 3600000px;
-    margin: 0 0 0 0;
-    text-align: center;
-    color: var(--muted);
-    font-size: 20px;
-}
-
-footer {
-    background-color: #f8f9fa;
-    color: #002343;
-    position: relative;
-    z-index: 3;
-    margin-top: -50px;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 20px 0;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    border-top: 1px solid #e9ecef;
-    /* Light border on top */
-}
-
-
-
-.border-space {
-    height: 1px;
-    /* Creates space for the border */
-    background: transparent;
-}
 
 .about-me {
-    background-color: rgba(0, 0, 212, 0.473);
-    border-top: 3px solid #0c0000;
+    background-color: #0A192F;
+    background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.015) 0px, rgba(255, 255, 255, 0.015) 3px, transparent 3px, transparent 6px);
+    border-top: 1px solid var(--border);
     max-width: 122200px;
     margin: 50px auto 0;
-    padding: 80px 20px 60px 20px;
-    font-family: 'Poppins', sans-serif;
-    color: #333;
+    padding: 3rem 2rem;
+    color: var(--text);
     position: relative;
+    border-radius: 8px;
 }
 
 .about-me::before {
@@ -357,10 +267,19 @@ footer {
     position: absolute;
 }
 
+.about-me::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 80%;
+    margin: 3rem auto;
+    background: linear-gradient(to right, transparent, rgba(100, 255, 218, 0.6), transparent);
+}
+
 .about-me h1 {
     font-size: 3rem;
     margin-bottom: 30px;
-    color: #222;
+    color: var(--accent-cyan);
     text-align: left;
 }
 
@@ -378,29 +297,33 @@ footer {
     font-size: 1.3rem;
     line-height: 1.8;
     margin-bottom: 20px;
+    color: var(--text);
 }
+
 
 .hobbies-section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     flex: 1;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    padding-bottom: 100px;
+    background-color: #112240;
+    background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 2px, transparent 2px, transparent 4px);
+    padding: 1.5rem;
     border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    color: #E6F1FF;
     margin-top: -100px;
     min-height: 200px;
-
 }
 
-.hobbies-section h2 {
+.hobbies-section h2,
+.hobbies-section h3 {
+    color: #64FFDA;
     margin: 0;
     padding: 25px 0 15px 0;
     align-self: flex-start;
     font-size: 1.8rem;
     margin-bottom: 20px;
-    color: #222;
     text-align: left;
 }
 
@@ -414,26 +337,26 @@ footer {
 }
 
 .hobby-btn {
-    padding: 8px 16px;
-    background: transparent;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
+    background-color: #1B2B44;
+    color: #64FFDA;
+    border: 1px solid rgba(100, 255, 218, 0.4);
     border-radius: 20px;
-    font-size: 0.9rem;
+    padding: 10px 18px;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .hobby-btn:hover {
-    background-color: #4a6baf;
-    color: white;
-    border-color: #4a6baf;
+    background-color: #64FFDA;
+    color: #112240;
+    border-color: #64FFDA;
+    transform: scale(1.05);
 }
 
 .hobby-item {
     font-size: 1rem;
     color: #444;
-    display: block;
     background: rgba(255, 255, 255, 0.8);
     text-align: center;
     height: 100%;
@@ -444,11 +367,13 @@ footer {
     border-radius: 8px;
 }
 
-/* Contact Section Styles */
+
 .contact-section {
-    background-color: #f8f9fa;
-    padding: 80px 20px;
-    color: #333;
+    background-color: #112240;
+    background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 2px, transparent 2px, transparent 4px);
+    padding: 4rem 20px;
+    color: var(--text);
+    border-top: 2px solid rgba(100, 255, 218, 0.25);
 }
 
 .contact-container {
@@ -460,7 +385,8 @@ footer {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 50px;
-    color: #1e3a8a;
+    color: var(--accent-cyan);
+    font-family: 'Bungee Inline', cursive;
 }
 
 .contact-content {
@@ -472,60 +398,17 @@ footer {
 .contact-info h3 {
     font-size: 1.8rem;
     margin-bottom: 20px;
-    color: #222;
+    color: var(--accent-blue);
 }
 
-.contact-info p {
+.contact-info p,
+.contact-details p {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 20px;
+    color: var(--text);
 }
 
-.contact-details p {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-.contact-form {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.form-group textarea {
-    resize: vertical;
-}
-
-.submit-btn {
-    background-color: #1e3a8a;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-.submit-btn:hover {
-    background-color: #152c5f;
-}
-
-/* Divider line */
 .contact-details {
     position: relative;
     padding-top: 20px;
@@ -539,19 +422,55 @@ footer {
     left: 0;
     width: 50px;
     height: 3px;
-    background: #1e3a8a;
+    background: var(--accent-blue);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-section h2 {
-        font-size: 2rem;
-    }
+.contact-form {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.35);
 }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(230, 241, 255, 0.55);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    background-color: var(--accent-blue);
+    color: var(--blue-dark);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: var(--accent-cyan);
+}
+
 
 .social-links {
     display: flex;
@@ -567,231 +486,11 @@ footer {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    border: 2px solid rgba(0, 255, 255, 0.3);
-    color: #00ced1;
-    /* cyan color */
-    font-size: 20px;
-    transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-    background-color: #00ced1;
-    color: #2d1c14;
-    /* dark brown bg color match */
-    border-color: #00ced1;
-}
-
-/* =========================
-   THEME OVERRIDES (COLORS + FONTS ONLY)lol coz i cant code for shit
-   
-   ========================= */
-
-/* 0) Palette + variables */
-:root {
-    /* theme blues */
-    --blue-dark: #0A192F;
-    --blue-mid: #112240;
-    --accent-cyan: #64FFDA;
-    --accent-blue: #57C5FF;
-
-    /* map existing vars to dark theme */
-    --text: #E6F1FF;
-    /* main text */
-    --muted: rgba(230, 241, 255, 0.72);
-    --border: rgba(87, 197, 255, 0.25);
-    --card-bg: #0F213F;
-    /* cards (hex mini, forms) */
-}
-
-/* 1) Global + abstract background */
-body {
-    background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
-    color: var(--text);
-    font-family: 'Orbitron', system-ui, sans-serif;
-    /* uses fonts already in your HTML */
-    position: relative;
-    overflow-x: hidden;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    inset: -80px;
-    background:
-        radial-gradient(circle at 18% 28%, rgba(100, 255, 218, 0.08) 0 38%, transparent 40%),
-        radial-gradient(circle at 82% 42%, rgba(87, 197, 255, 0.07) 0 36%, transparent 40%),
-        radial-gradient(circle at 50% 85%, rgba(100, 255, 218, 0.05) 0 34%, transparent 40%);
-    z-index: -1;
-    pointer-events: none;
-}
-
-/* 2) Navbar (.nav) */
-.nav {
-    background: var(--blue-dark);
-    border-bottom: 1px solid var(--border);
-}
-
-.nav a {
-    color: var(--text);
-    text-decoration: none;
-}
-
-.nav a:hover {
-    color: var(--accent-blue);
-}
-
-/* 3) Hero text */
-.title {
-    font-family: 'Bungee Inline', cursive;
-    color: var(--accent-cyan);
-    letter-spacing: 0.5px;
-}
-
-.desc {
-    border-color: var(--accent-blue);
-    color: var(--text);
-    background: transparent;
-    /* remove white chip */
-}
-
-.sub {
-    color: var(--muted);
-}
-
-/* 4) Main hexagon (photo + outline) */
-.hex-photo {
-    background: var(--blue-dark);
-    /* fallback behind image */
-}
-
-.hex-outline polygon {
-    stroke: var(--accent-cyan);
-}
-
-.hex-outline circle {
-    fill: var(--blue-dark);
-    stroke: var(--accent-blue);
-}
-
-/* 5) Skill dots + mini hex cards (inner hexagons) */
-.dot {
-    border: 3px solid var(--text);
-    /* ring so dots pop on dark bg */
-    box-shadow: 0 0 0 0 transparent;
-}
-
-.skill:hover .dot {
-    transform: scale(1.2);
-    box-shadow: 0 0 12px rgba(100, 255, 218, 0.5);
-}
-
-.mini .hexcard {
-    background: var(--card-bg);
-    color: var(--text);
-}
-
-.mini .hexcard::before {
-    /* conic gauge against dark bg */
-    background: conic-gradient(var(--skill-color) var(--progress), rgba(230, 241, 255, 0.08) 0);
-}
-
-.hexcard h3 {
-    color: var(--text);
-    font-family: 'Bungee Inline', cursive;
-}
-
-.hexcard p {
-    color: var(--muted);
-}
-
-/* 6) About Me */
-.about-me {
-    background: transparent;
-    border-top: 1px solid var(--border);
-    color: var(--text);
-}
-
-.about-me h1 {
-    color: var(--accent-cyan);
-}
-
-.bio p {
-    color: var(--text);
-}
-
-.hobbies-section {
-    background: rgba(17, 34, 64, 0.6);
-    /* translucent dark card */
-}
-
-.hobby-btn {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-}
-
-.hobby-btn:hover {
-    background: var(--accent-blue);
-    color: var(--blue-dark);
-    border-color: var(--accent-blue);
-}
-
-/* 7) Contact section */
-.contact-section {
-    background: transparent;
-    /* remove light block */
-    color: var(--text);
-}
-
-.contact-section h2 {
-    color: var(--accent-cyan);
-    font-family: 'Bungee Inline', cursive;
-}
-
-.contact-info h3 {
-    color: var(--accent-blue);
-}
-
-.contact-info p,
-.contact-details p {
-    color: var(--text);
-}
-
-.contact-details::before {
-    background: var(--accent-blue);
-}
-
-.contact-form {
-    background: var(--card-bg);
-    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.35);
-}
-
-.form-group input,
-.form-group textarea {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border);
-    color: var(--text);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: rgba(230, 241, 255, 0.55);
-}
-
-.submit-btn {
-    background-color: var(--accent-blue);
-    color: var(--blue-dark);
-}
-
-.submit-btn:hover {
-    background-color: var(--accent-cyan);
-}
-
-/* 8) Social links (icons) */
-.social-links a {
     border: 2px solid rgba(100, 255, 218, 0.35);
     color: var(--accent-cyan);
     background: transparent;
+    font-size: 20px;
+    transition: all 0.3s ease;
 }
 
 .social-links a:hover {
@@ -800,169 +499,45 @@ body::before {
     border-color: var(--accent-cyan);
 }
 
-/* 9) Footer (your <footer class="contact"> and footer styles) */
-.contact {
-    background: var(--blue-dark) !important;
-    color: var(--muted) !important;
-}
 
+.contact,
 footer {
     background: var(--blue-dark) !important;
     color: var(--muted) !important;
+    text-align: center;
+}
+
+.contact {
+    max-height: 120px;
+    max-width: 3600000px;
+    margin: 0;
+    font-size: 20px;
+}
+
+footer {
+    position: relative;
+    z-index: 3;
+    margin-top: -50px;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
     border-top: 1px solid var(--border) !important;
 }
 
-/* your existing navbar styles */
-/* your body styles */
-/* your hexagon styles */
-/* etc... */
-
-/* ---- Put this at the end ---- */
-.contact-section {
-    background: linear-gradient(135deg, #0A192F, #112240);
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    border-top: 2px solid rgba(100, 255, 218, 0.25);
-}
-
-.about-me::after {
-    content: '';
-    display: block;
-    height: 2px;
-    width: 80%;
-    margin: 3rem auto;
-    background: linear-gradient(to right, transparent, rgba(100, 255, 218, 0.6), transparent);
-}
-
-.contact-section {
-    background: linear-gradient(135deg, #112240, #1B2B44);
-    /* slightly lighter & less navy */
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    border-top: 2px solid rgba(100, 255, 218, 0.25);
-}
-
-.contact-section {
-    background-color: #112240;
-    /* base color */
-    background-image:
-        repeating-linear-gradient(45deg,
-            rgba(255, 255, 255, 0.02) 0px,
-            rgba(255, 255, 255, 0.02) 2px,
-            transparent 2px,
-            transparent 4px);
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    border-top: 2px solid rgba(100, 255, 218, 0.25);
-}
-
-/* About Me section texture */
-.about-me {
-    background-color: #0A192F;
-    /* base dark blue */
-    background-image:
-        repeating-linear-gradient(135deg,
-            rgba(255, 255, 255, 0.015) 0px,
-            rgba(255, 255, 255, 0.015) 3px,
-            transparent 3px,
-            transparent 6px);
-    padding: 3rem 2rem;
-    border-radius: 8px;
-}
-
-/* Interests & Hobbies box texture */
-.interests-box {
-    background-color: #112240;
-    /* slightly lighter blue */
-    background-image:
-        repeating-linear-gradient(45deg,
-            rgba(255, 255, 255, 0.02) 0px,
-            rgba(255, 255, 255, 0.02) 2px,
-            transparent 2px,
-            transparent 4px);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid rgba(100, 255, 218, 0.2);
-}
-
-/* About Me section texture */
-.about-me {
-    background-color: #0A192F;
-    /* base dark navy */
-    background-image:
-        repeating-linear-gradient(135deg,
-            rgba(255, 255, 255, 0.015) 0px,
-            rgba(255, 255, 255, 0.015) 3px,
-            transparent 3px,
-            transparent 6px);
-    padding: 3rem 2rem;
-    border-radius: 8px;
-}
-
-/* Interests & Hobbies box texture */
-.hobbies-section {
-    background-color: #112240;
-    /* slightly lighter navy */
-    background-image:
-        repeating-linear-gradient(45deg,
-            rgba(255, 255, 255, 0.02) 0px,
-            rgba(255, 255, 255, 0.02) 2px,
-            transparent 2px,
-            transparent 4px);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid rgba(100, 255, 218, 0.2);
-}
-
-.hobbies-section {
-    background-color: #112240;
-    /* slightly lighter navy */
-    background-image:
-        repeating-linear-gradient(45deg,
-            rgba(255, 255, 255, 0.02) 0px,
-            rgba(255, 255, 255, 0.02) 2px,
-            transparent 2px,
-            transparent 4px);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid rgba(100, 255, 218, 0.2);
-    color: #E6F1FF;
-    /* soft white-blue text */
-}
-
-.hobbies-section h2,
-.hobbies-section h3 {
-    color: #64FFDA;
-
-    /* aqua for headings */
+.border-space {
+    height: 1px;
+    background: transparent;
 }
 
 #about {
     border-top: 1px solid rgba(0, 255, 170, 0.3);
     padding-top: 40px;
-    /* Keeps spacing so text doesn't touch the border */
 }
 
-.hobby-btn {
-    background-color: #1B2B44;
-    /* dark blue base */
-    color: #64FFDA;
-    /* soft aqua text */
-    border: 1px solid rgba(100, 255, 218, 0.4);
-    /* subtle border */
-    border-radius: 20px;
-    padding: 10px 18px;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
 
-.hobby-btn:hover {
-    background-color: #64FFDA;
-    /* accent aqua on hover */
-    color: #112240;
-    /* dark text on hover */
-    border-color: #64FFDA;
-    transform: scale(1.05);
-    /* slight hover pop */
+@media (max-width: 768px) {
+    .contact-content { grid-template-columns: 1fr; }
+    .contact-section h2 { font-size: 2rem; }
 }
