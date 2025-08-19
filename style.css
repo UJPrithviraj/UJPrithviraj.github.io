@@ -541,3 +541,13 @@ footer {
     .contact-content { grid-template-columns: 1fr; }
     .contact-section h2 { font-size: 2rem; }
 }
+
+/* Ensure About Me uses Orbitron */
+.about-me,
+.about-me .bio,
+.about-me .bio p {
+font-family: 'Orbitron', system-ui, sans-serif;
+font-weight: 400; 
+}
+
+
